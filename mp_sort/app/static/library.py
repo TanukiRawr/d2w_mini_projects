@@ -24,6 +24,14 @@ def generate():
 	# under div section with the id called "generate"	
 	document.getElementById("generate").innerHTML = array_str
 
+def bubble_sort(array):
+    # This function sorts an array using bubble sort
+    n = len(array)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if array[j] > array[j + 1]:
+                array[j], array[j + 1] = array[j + 1], array[j]
+
 
 def sortnumber1():
 	'''	This function is used in Exercise 1.
@@ -35,10 +43,15 @@ def sortnumber1():
 		- call your sort function, either bubble sort or insertion sort
 		- create a string of the sorted numbers and store it in array_str
 	'''
-	pass
+
+	generated_numbers = "5,2,9,1,5,6."
+	array = list(map(int, generated_numbers[:-1].split(",")))  
+	bubble_sort(array) 
+	sorted_numbers = ",".join(map(str, array)) + "." 
+
 
 	array_str = None
-	
+	array_str = sorted_numbers
 	document.getElementById("sorted").innerHTML = array_str
 
 def sortnumber2():
