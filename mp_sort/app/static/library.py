@@ -5,16 +5,17 @@ def bubble_sort(array: list[int|float]) -> None:
     n = len(array)
     for i in range(0,n-1):
         for j in range (0,n-1):
-            firstnum = array[j]
-            secondnum = array[j+1]
+            firstnum = int(array[j])
+            secondnum = int(array[j+1])
             if firstnum>secondnum:
                 array[j],array[j+1] = array[j+1],array[j]
 
 def list_to_string(list,string:str):
     string = ''
+    num = len(list)
     for i in list:
         string = string + str(i)
-        if i == list[9]:
+        if i == list[num-1]:
             string = string + "."
         else:
             string = string + ","
@@ -54,19 +55,15 @@ def generate():
 
 def sortnumber1():
 	'''	This function is used in Exercise 1.
-		The function is called when the sort button is clicked.
-
-		You need to do the following:
-		- get the list of numbers from the "generate" HTML id, use document.getElementById(id).innerHTML
-		- create a list of integers from the string of numbers
 		- call your sort function, either bubble sort or insertion sort
 		- create a string of the sorted numbers and store it in array_str
 	'''
-	pass
-	value = document.getElementsByName("generate")[0].value
-      
+	generated_numbers = document.getElementById("generate").innerHTML
+	generated_numbers = generated_numbers[:-1]
+	array = (generated_numbers.split(','))
+	bubble_sort(array) 
 	array_str = None
-	
+	array_str = list_to_string(array,array_str)
 	document.getElementById("sorted").innerHTML = array_str
 
 def sortnumber2():
@@ -88,7 +85,7 @@ def sortnumber2():
 		window.alert("Your textbox is empty")
 		return
 
-	num = value.split(',')
+	num = (value.split(','))
 	bubble_sort(num)
 	# Your code should start from here
 	# store the final string to the variable array_str
@@ -97,5 +94,3 @@ def sortnumber2():
 	array_str = None
 	array_str = list_to_string(num,array_str)
 	document.getElementById("sorted").innerHTML = array_str
-
-
