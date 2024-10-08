@@ -2,31 +2,41 @@ from org.transcrypt.stubs.browser import *
 import random
 
 def bubble_sort(array: list[int|float]) -> None:
+    # bubble sort
     n = len(array)
+
+	# checking if the left number is larger than the right number, and if so, swap
+    # Will check for all the outer and inner iterations
+    # Ensures the numbers are float
     for i in range(0,n-1):
         for j in range (0,n-1):
-            firstnum = int(array[j])
-            secondnum = int(array[j+1])
+            firstnum = float(array[j])
+            secondnum = float(array[j+1])
             if firstnum>secondnum:
                 array[j],array[j+1] = array[j+1],array[j]
-
-def list_to_string(list,string:str):
+                
+#Changing a list of int/float to string
+def list_to_string(ls,string:str):
     string = ''
-    num = len(list)
-    for i in list:
-        string = string + str(i)
-        if i == list[num-1]:
+    num = len(ls)
+    # for every element in the list, add to string with a comma and ends the string with a .
+    for i in range(0,num):
+        string = string + str(ls[i])
+        if i == (num-1):
             string = string + "."
         else:
             string = string + ","
     return string
 
+#generating a random list of integer with a given number of elements inside and seed
 def gen_random_int(number, seed):
 	result = None
 	ls = []
 	random.seed(seed)
+    # the range of random int is from 0 - 100 to make the sorting more apparent
 	for i in range(number):
-		ls.append(i)
+		ls.append(random.randint(0,100))
+            
 	random.shuffle(ls)
 	result = ls
 	return result
@@ -59,11 +69,19 @@ def sortnumber1():
 		- create a string of the sorted numbers and store it in array_str
 	'''
 	generated_numbers = document.getElementById("generate").innerHTML
+    
+	#removes the .
 	generated_numbers = generated_numbers[:-1]
-	array = (generated_numbers.split(','))
-	bubble_sort(array) 
+      
+	#split the string into a list of char
+	array_of_char = (generated_numbers.split(','))
+    
+	#bubble sort the list of char (the bubble sort functions turns the char into float)
+	bubble_sort(array_of_char) 
 	array_str = None
-	array_str = list_to_string(array,array_str)
+      
+	#changes the list of float into a string to show on the website
+	array_str = list_to_string(array_of_char,array_str)
 	document.getElementById("sorted").innerHTML = array_str
 
 def sortnumber2():
@@ -85,6 +103,7 @@ def sortnumber2():
 		window.alert("Your textbox is empty")
 		return
 
+	#splits the string and sort it into a list of float
 	num = (value.split(','))
 	bubble_sort(num)
 	# Your code should start from here
@@ -92,5 +111,6 @@ def sortnumber2():
 	pass
 
 	array_str = None
+    #Change the list to string to show on the website
 	array_str = list_to_string(num,array_str)
 	document.getElementById("sorted").innerHTML = array_str
