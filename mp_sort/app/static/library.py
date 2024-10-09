@@ -1,7 +1,7 @@
 from org.transcrypt.stubs.browser import *
 import random
 
-def bubble_sort(array: list[int|float]) -> None:
+def bubble_sort(array) -> None:
     # bubble sort
     n = len(array)
 
@@ -14,7 +14,11 @@ def bubble_sort(array: list[int|float]) -> None:
             secondnum = float(array[j+1])
             if firstnum>secondnum:
                 array[j],array[j+1] = array[j+1],array[j]
-                
+
+def char_to_int(ls):
+    for i in range(0,len(ls)):
+        ls[i] = float(ls[i])
+    
 #Changing a list of int/float to string
 def list_to_string(ls,string:str):
     string = ''
@@ -74,14 +78,14 @@ def sortnumber1():
 	generated_numbers = generated_numbers[:-1]
       
 	#split the string into a list of char
-	array_of_char = (generated_numbers.split(','))
-    
+	array = (generated_numbers.split(','))
+	char_to_int(array)
 	#bubble sort the list of char (the bubble sort functions turns the char into float)
-	bubble_sort(array_of_char) 
+	bubble_sort(array) 
 	array_str = None
       
 	#changes the list of float into a string to show on the website
-	array_str = list_to_string(array_of_char,array_str)
+	array_str = list_to_string(array,array_str)
 	document.getElementById("sorted").innerHTML = array_str
 
 def sortnumber2():
@@ -112,5 +116,6 @@ def sortnumber2():
 
 	array_str = None
     #Change the list to string to show on the website
+	char_to_int(num)
 	array_str = list_to_string(num,array_str)
 	document.getElementById("sorted").innerHTML = array_str
