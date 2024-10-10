@@ -10,8 +10,8 @@ def bubble_sort(array) -> None:
     # Ensures the numbers are float
     for i in range(0,n-1):
         for j in range (0,n-1):
-            firstnum = float(array[j])
-            secondnum = float(array[j+1])
+            firstnum = (array[j])
+            secondnum = (array[j+1])
             if firstnum>secondnum:
                 array[j],array[j+1] = array[j+1],array[j]
 
@@ -109,6 +109,7 @@ def sortnumber2():
 
 	#splits the string and sort it into a list of float
 	num = (value.split(','))
+	char_to_int(num)
 	bubble_sort(num)
 	# Your code should start from here
 	# store the final string to the variable array_str
@@ -116,6 +117,5 @@ def sortnumber2():
 
 	array_str = None
     #Change the list to string to show on the website
-	char_to_int(num)
 	array_str = list_to_string(num,array_str)
 	document.getElementById("sorted").innerHTML = array_str
