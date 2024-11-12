@@ -10,15 +10,15 @@
     </tr>
   </thead>
   <tbody>
-  {% for idx in range(users|length) %}
+  {% for idx in range(users|length) %} <!--this is the equivalent of python range(len(users))#-->
   	<tr>
-      <th scope="row" class="lead">{{ idx+1 }}</th>
-      <td class="lead">
-      	#Replace Me#
+      <th scope="row" class="lead">{{ idx+1 }}</th> <!--this line generates the rows, starting from 1-->
+      <td class="lead"> <!--this line displays each item in users at the current index (idx)-->
+      	{{ users[idx]}} <!--displays the items inside users-->
       </td>
     </tr>
-  {% endfor %}
+  {% endfor %} <!-- ends the loop(jinja style)-->
   
   </tbody>
 </table>
-{% endblock %}
+{% endblock %} <!-- ends the block of content-->
